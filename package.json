@@ -1,0 +1,15 @@
+{
+  "name": "cheerup",
+  "version": "1.0.1",
+  "main": "cli.js",
+  "bin": {
+    "cheerup": "./cli.js"
+  },
+  "homepage": "https://github.com/seognil-lab/cheerup",
+  "author": "seognil LC <seognil@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "2.20.0",
+    "knuth-shuffle-seeded": "1.0.6"
+  }
+}

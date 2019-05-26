@@ -1,6 +1,6 @@
 ## What
 
-Log a mantra in terminal,  
+Print a mantra in terminal,  
 > Simple phrases to build positive mental habits.
 
 ![intro](https://user-images.githubusercontent.com/5526096/58380861-40a25a00-7fe9-11e9-8120-4e41920772f1.gif)
@@ -53,23 +53,37 @@ You can add more lines ;)
 
 **Local Development:**
 
-git clone this repo first.  
-Install [`Node` and `NPM`](https://nodejs.org/)
-
-_For npm user:_
+Install [`Node` and `NPM`](https://nodejs.org/).  
+git clone and cd into the folder.  
 
 ```shell
-npm install # install depencency
-npm link # make it global command
-npm uninstall -g cheerup # unregister global command
+# install depencency
+npm install
+
+# simply run from source
+node ./cli.js 
+
+
+# -------- global install test
+
+# make it global command
+npm link 
+
+# run from linked global command
+cheerup 
+
+# unregister global command
+npm uninstall -g cheerup 
+
 ```
 
 _For yarn user:_
 
 ```shell
-yarn install # install depencency
-yarn link # make it global command
-yarn unlink cheerup # unregister global command
+# link of yarn is bit different
+
+yarn link
+yarn unlink cheerup
 ```
 
 **Distribution:**

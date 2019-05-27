@@ -49,7 +49,7 @@ echo 'cheerup --daily' >> ~/.zshrc && source ~/.zshrc
 **Add More Sentenses:**
 
 mantras phrases are listed in `sentences/mantras.js`,  
-You can add more lines ;)
+You can add more lines with PR ;)
 
 **Local Development:**
 

@@ -96,3 +96,5 @@ core function code is in `cli.js`,
 runner info declared in `package.json`.
 
 If mantras list changed, the cli will complete other staff (such as update daily function) before run.
+
+(I'm sorry but I don't know how to improve the ramdom pick algorithm yet, maybe you can improve it :)

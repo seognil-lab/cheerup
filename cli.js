@@ -18,6 +18,9 @@ program.parse(process.argv);
 
 // * ---------------------------------------------------------------- regeneration function
 
+// * this function generate a shuffled list for daily pick
+// * It's not the best implement, but it works
+
 const regen = () => {
   const mantrasShuffledAgain = shuffle(mantras);
   const genResult = `
@@ -43,6 +46,7 @@ let nextMantra;
 if (program.daily) {
 
   // * ---------------- checkDailyUpdate
+  // * It's not the best implement, but it works
   const willGenShuffled =
     version !== lastVersion ||
     (mantrasShuffled.length !== mantras.length && Math.abs(Date.now() - lastUpdateTime) > 86400);
@@ -53,7 +57,7 @@ if (program.daily) {
   }
 
   // * ---------------- pick from ensured daily list
-  nextMantra = _mantrasShuffled[~~(Date.now() / 1000 / 60 / 24) % mantras.length];
+  nextMantra = _mantrasShuffled[~~(Date.now() / 1000 / 3600 / 24) % mantras.length];
 
 } else {
 

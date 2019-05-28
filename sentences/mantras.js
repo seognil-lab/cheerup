@@ -1,4 +1,5 @@
 const mantras = [
+  // * momentum
   'Accept and embrace all experiences.',
   'Act without expectation.',
   'Action expresses priorities.',
@@ -64,6 +65,22 @@ const mantras = [
   'You can and you will.',
   'You matter.',
   'Your potential is unlimited.',
+
+  // * huawei
+  'The journey is hard and joyful.',
+
+  // * steve jobs
+  'Stay hungry, stay foolish',
+
+  // * my collection
+  'Always learn from the best!',
+  'Environment Body Mind',
+  'Fail Fast, Fail Cheap, Move On.',
+  'Happy Smart Useful',
+  'I hear & I forget. I see & I remember. I do & I understand.',
+  'Judge less, Observe more',
+  'Sic Parvis Magna',
+  'Victory Loves Preparation',
 ];
 
 module.exports = mantras;

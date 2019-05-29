@@ -66,21 +66,41 @@ const mantras = [
   'You matter.',
   'Your potential is unlimited.',
 
-  // * huawei
+  // * ---------------- my collection
+
+  'Always learn from the best!',
+
+  // * https://sivers.org/hsu
+  'Happy Smart Useful',
+
+  // * https://wanqu.co/a/5765/%E6%AF%8F%E6%9C%88%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C-200-%E5%B0%8F%E6%97%B6/
+  // * https://qotoqot.com/blog/improving-focus/
+  'Environment Body Mind',
+
+  // * the mechanic (2011)
+  'Victory Loves Preparation',
+
+  'Judge less, Observe more',
+
+  'I hear & I forget. I see & I remember. I do & I understand.',
+
+  'Fail Fast, Fail Cheap, Move On.',
+
+  // * Uncharted 4: A Thief's End
+  'Sic Parvis Magna',
+
+  'Every Expert Was Once A Beginner',
+
+  // * HUAWEI
   'The journey is hard and joyful.',
 
-  // * steve jobs
+  // * Steve Jobs
   'Stay hungry, stay foolish',
 
-  // * my collection
-  'Always learn from the best!',
-  'Environment Body Mind',
-  'Fail Fast, Fail Cheap, Move On.',
-  'Happy Smart Useful',
-  'I hear & I forget. I see & I remember. I do & I understand.',
-  'Judge less, Observe more',
-  'Sic Parvis Magna',
-  'Victory Loves Preparation',
+  'KEEP CALM AND CALM DOWN',
+
+  // * 尤雨溪
+  'MAKE EPIC SHIT',
 ];
 
 module.exports = mantras;

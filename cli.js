@@ -4,17 +4,26 @@ const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 const shuffle = require('knuth-shuffle-seeded');
-const mantras = require('./sentences/mantras');
-const { mantrasShuffled, lastUpdateTime, lastVersion } = require('./sentences/mantras-shuffled');
+const mantras = require('./mantras');
+
+const configFile = './.config.js';
+const { mantraOfDay, lastUpdateDay, lastUpdateTime } = require('./.config.js');
+
+const version = require('./package.json').version;
 
 // * ---------------------------------------------------------------- program conifg
 
-const version = '1.0.0';
 program.version(version);
 program.option('-D, --daily', 'random every day');
-program.option('-S, --shuffle', 're-generate random list of daily');
+// program.option('-F, --frequency', 'set random frequency by seconds'); // maybe later
+// program.option('-S, --shuffle', 're-generate random list of daily'); // useless
 program.command('*').action(() => program.help());
 program.parse(process.argv);
+
+// * ---------------------------------------------------------------- helper
+
+const dayOfNow = () => ~~(Date.now() / 86400 / 1000);
+const outdate = (a, b) => Math.abs(a - b) > 0;
 
 // * ---------------------------------------------------------------- regeneration function
 
@@ -22,50 +31,36 @@ program.parse(process.argv);
 // * It's not the best implement, but it works
 
 const regen = () => {
-  const mantrasShuffledAgain = shuffle(mantras);
+  const nextMantra = mantras[~~(Math.random() * mantras.length)];
   const genResult = `
-    const mantrasShuffled = [${mantrasShuffledAgain.map((e) => '"' + e + '"')}];
-    const lastUpdateTime = ${Date.now()};
-    const lastVersion = "${version}";
-    module.exports = { mantrasShuffled, lastUpdateTime, lastVersion };
+      const mantraOfDay = '${nextMantra}';
+      const lastUpdateDay = ${dayOfNow()};
+      const lastUpdateTime = "${Date.now()}";
+      module.exports = { mantraOfDay, lastUpdateDay, lastUpdateTime };
     `;
-  fs.writeFile(path.resolve(__dirname, './sentences/mantras-shuffled.js'), genResult, (err) => {
+  fs.writeFile(path.resolve(__dirname, configFile), genResult, (err) => {
     err && console.warn(err);
   });
-  return mantrasShuffledAgain;
+  return nextMantra;
 };
-
-if (program.shuffle) {
-  regen();
-}
 
 // * ---------------------------------------------------------------- pick a mantra
 
-let nextMantra;
+let theMantra;
 
 if (program.daily) {
+  // TODO frequency // seognil LC 2019/05/29
+  program.frequency = 'day';
 
   // * ---------------- checkDailyUpdate
-  // * It's not the best implement, but it works
-  const willGenShuffled =
-    version !== lastVersion ||
-    (mantrasShuffled.length !== mantras.length && Math.abs(Date.now() - lastUpdateTime) > 86400);
+  const willGenNext = !lastUpdateDay || outdate(dayOfNow(), lastUpdateDay);
 
-  let _mantrasShuffled = mantrasShuffled;
-  if (willGenShuffled) {
-    _mantrasShuffled = regen();
-  }
-
-  // * ---------------- pick from ensured daily list
-  nextMantra = _mantrasShuffled[~~(Date.now() / 1000 / 3600 / 24) % mantras.length];
-
+  theMantra = willGenNext ? regen() : mantraOfDay;
 } else {
-
   // * ---------------- pick random
-  nextMantra = mantras[~~(Math.random() * mantras.length)];
-
+  theMantra = mantras[~~(Math.random() * mantras.length)];
 }
 
 // * ---------------------------------------------------------------- show picked mantra
 
-console.log(nextMantra);
+console.log(theMantra);
